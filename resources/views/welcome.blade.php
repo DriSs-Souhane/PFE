@@ -8,34 +8,80 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="{{ $setting->meta_description }}">
     <meta name="keywords" content="{{ $setting->meta_keywords }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4e73df;
-            --secondary-color: #2e59d9;
-            --accent-color: #f8f9fc;
-            --dark-color: #2c3e50;
-            --light-color: #f8f9fa;
-            --success-color: #1cc88a;
-            --text-color: #5a5c69;
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --text: #495057;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        .navbar {
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            background-color: white !important;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: var(--primary) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 0.75rem 1.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
             color: white;
-            padding: 5rem 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6rem 0 8rem;
             position: relative;
             overflow: hidden;
         }
@@ -43,28 +89,65 @@
         .hero-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-img {
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.2));
+            transition: all 0.5s ease;
+            transform: perspective(1000px) rotateY(-10deg);
+        }
+
+        .hero-img:hover {
+            transform: perspective(1000px) rotateY(-5deg) translateY(-10px);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 6rem 0;
+            background-color: var(--light);
         }
 
         .section-title {
-            position: relative;
-            margin-bottom: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: var(--dark-color);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -0.75rem;
+            bottom: -10px;
             left: 0;
             width: 60px;
             height: 4px;
-            background-color: var(--primary-color);
+            background: var(--primary);
             border-radius: 2px;
         }
 
@@ -73,70 +156,283 @@
             transform: translateX(-50%);
         }
 
-        .feature-box {
-            background-color: white;
-            border-radius: 0.5rem;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             height: 100%;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: none;
+            position: relative;
+            overflow: hidden;
         }
 
-        .feature-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--primary);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover::before {
+            height: 100%;
         }
 
         .feature-icon {
             font-size: 2.5rem;
-            color: var(--primary-color);
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 1rem;
         }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            padding: 0.5rem 1.5rem;
-            font-weight: 500;
+        /* How It Works */
+        .how-it-works {
+            padding: 6rem 0;
+            background: white;
         }
 
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
+        .step-card {
+            display: flex;
+            margin-bottom: 2rem;
+            position: relative;
         }
 
-        .btn-outline-primary {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        .btn-outline-primary:hover {
-            background-color: var(--primary-color);
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
             color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
         }
 
-        .animate-slide-in {
-            animation: slideIn 0.5s ease forwards;
-            opacity: 0;
+        .step-content {
+            padding-top: 0.5rem;
         }
 
-        @keyframes slideIn {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 0;
+            background: var(--light);
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stars {
+            color: #ffc107;
+            margin-bottom: 1rem;
+        }
+
+        .client-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            margin-right: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-btn {
+            background: white;
+            color: var(--primary);
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .footer-links h5 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            margin-right: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 3rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.75rem;
             }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
+            
+            .hero-img {
+                margin-top: 3rem;
             }
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .hero-section {
-                padding: 3rem 0;
+                padding: 4rem 0 6rem;
+            }
+            
+            .hero-title {
+                font-size: 2.25rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -146,44 +442,36 @@
 </head>
 
 <body>
-    {{-- nav --}}
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
-            <a class="h2 text-decoration-none" href="#">{{ $setting->bname }}</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#">{{ $setting->bname }}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
-                    <ul class="nav">
-                        @guest
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/register">Register</a>
-                        </li>
-                        @endguest
-                        @auth
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-dark" href="/dashboard">My Account</a>
-                        </li>
-                        @endauth
-                    </ul>
-
-                    <a class=" btn btn-primary btn-md rounded-1 h3 ms-md-4" aria-current="page"
-                        href="#">{{ $setting->phone }}</a>
-
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+                    @endguest
+                    @auth
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">My Account</a>
+                    </li>
+                    @endauth
                 </ul>
+                <a href="tel:{{ $setting->phone }}" class="btn btn-primary ms-lg-3">{{ $setting->phone }}</a>
             </div>
         </div>
     </nav>
@@ -192,50 +480,50 @@
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-5 fw-bold mb-4">Book Appointments Easily</h1>
-                    <p class="lead mb-4">Streamline your scheduling process with our intuitive appointment booking system. Save time and focus on what matters most.</p>
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">Book Appointments in Minutes</h1>
+                    <p class="hero-subtitle">Streamline your scheduling with our intuitive booking system. Save time, reduce no-shows, and focus on what matters most.</p>
                     <div class="d-flex gap-3">
-                        <a href="{{ route('home') }}" class="btn btn-light btn-lg px-4" style="pointer-events: auto; cursor: pointer;">Book Now</a>
+                        <a href="{{ route('home') }}" class="btn btn-light btn-lg px-4">Book Now</a>
                         <a href="#how-it-works" class="btn btn-outline-light btn-lg px-4">Learn More</a>
                     </div>
                 </div>
-                <div class="col-lg-6 d-none d-lg-block">
-                    <img src="https://illustrations.popsy.co/amber/digital-nomad.svg" alt="Appointment Booking" class="img-fluid">
+                <div class="col-lg-6">
+                    <img src="https://illustrations.popsy.co/amber/digital-nomad.svg" alt="Appointment Booking" class="img-fluid hero-img floating">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-5 bg-light">
+    <section id="features" class="features-section">
         <div class="container">
-            <h2 class="section-title text-center mb-5">Why Choose Us</h2>
+            <h2 class="section-title text-center">Why Choose Our Platform</h2>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="feature-box">
+                    <div class="feature-card">
                         <div class="feature-icon">
                             <i class="bi bi-clock-history"></i>
                         </div>
-                        <h3>Time Saving</h3>
-                        <p>Reduce no-shows and save administrative time with automated reminders and easy rescheduling.</p>
+                        <h3 class="feature-title">Time Saving</h3>
+                        <p>Automated reminders and easy rescheduling reduce no-shows and save administrative time.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-box">
+                    <div class="feature-card">
                         <div class="feature-icon">
                             <i class="bi bi-calendar2-check"></i>
                         </div>
-                        <h3>Easy Scheduling</h3>
+                        <h3 class="feature-title">Easy Scheduling</h3>
                         <p>Intuitive interface makes booking appointments simple for both staff and customers.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-box">
+                    <div class="feature-card">
                         <div class="feature-icon">
                             <i class="bi bi-graph-up"></i>
                         </div>
-                        <h3>Performance Insights</h3>
+                        <h3 class="feature-title">Performance Insights</h3>
                         <p>Get valuable data on your business performance with our comprehensive analytics.</p>
                     </div>
                 </div>
@@ -244,140 +532,105 @@
     </section>
 
     <!-- How It Works Section -->
-    <section id="how-it-works" class="py-5">
+    <section id="how-it-works" class="how-it-works">
         <div class="container">
-            <h2 class="section-title text-center mb-5">How It Works</h2>
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <div class="pe-lg-5">
-                        <div class="d-flex mb-4">
-                            <div class="me-4">
-                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-                                    <span class="h4 mb-0">1</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h4>Select a Service</h4>
-                                <p>Choose from our wide range of professional services tailored to your needs.</p>
-                            </div>
+                    <h2 class="section-title">How It Works</h2>
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Select a Service</h4>
+                            <p>Choose from our wide range of professional services tailored to your needs.</p>
                         </div>
-                        <div class="d-flex mb-4">
-                            <div class="me-4">
-                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-                                    <span class="h4 mb-0">2</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h4>Pick a Professional</h4>
-                                <p>Select your preferred staff member based on availability and expertise.</p>
-                            </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Pick a Professional</h4>
+                            <p>Select your preferred staff member based on availability and expertise.</p>
                         </div>
-                        <div class="d-flex mb-4">
-                            <div class="me-4">
-                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-                                    <span class="h4 mb-0">3</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h4>Choose Date & Time</h4>
-                                <p>View real-time availability and select the most convenient slot for you.</p>
-                            </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Choose Date & Time</h4>
+                            <p>View real-time availability and select the most convenient slot for you.</p>
                         </div>
-                        <div class="d-flex">
-                            <div class="me-4">
-                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-                                    <span class="h4 mb-0">4</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h4>Confirm Booking</h4>
-                                <p>Complete your booking and receive instant confirmation with all details.</p>
-                            </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4 class="step-title">Confirm Booking</h4>
+                            <p>Complete your booking and receive instant confirmation with all details.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 mt-5 mt-lg-0">
-                    <img src="https://illustrations.popsy.co/amber/designer.svg" alt="How it works" class="img-fluid rounded shadow">
+                <div class="col-lg-6">
+                    <img src="https://illustrations.popsy.co/amber/designer.svg" alt="How it works" class="img-fluid rounded-4 shadow-lg">
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section id="booking" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title text-center mb-5">Make an Appointment</h2>
-            <div class="text-center">
-                <p class="lead mb-4">Ready to book your appointment? Click the button below to get started.</p>
-                <a href="{{ route('home') }}" class="btn btn-primary btn-lg px-4">Book Appointment Now</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-5">
+    <section class="testimonials">
         <div class="container">
-            <h2 class="section-title text-center mb-5">What Our Clients Say</h2>
+            <h2 class="section-title text-center">What Our Clients Say</h2>
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="mb-3 text-warning">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="card-text">"This booking system has saved me so much time. The interface is intuitive and the reminders have significantly reduced no-shows."</p>
-                            <div class="d-flex align-items-center mt-3">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" class="rounded-circle me-3" width="50" height="50" alt="Client">
-                                <div>
-                                    <h6 class="mb-0">Sarah Johnson</h6>
-                                    <small class="text-muted">Small Business Owner</small>
-                                </div>
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="mb-4">"This booking system has saved me so much time. The interface is intuitive and the reminders have significantly reduced no-shows."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="client-img">
+                            <div>
+                                <h6 class="mb-0">Sarah Johnson</h6>
+                                <small class="text-muted">Small Business Owner</small>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="mb-3 text-warning">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="card-text">"As a customer, I love how easy it is to book appointments. The real-time availability makes scheduling a breeze."</p>
-                            <div class="d-flex align-items-center mt-3">
-                                <img src="https://randomuser.me/api/portraits/men/45.jpg" class="rounded-circle me-3" width="50" height="50" alt="Client">
-                                <div>
-                                    <h6 class="mb-0">Michael Chen</h6>
-                                    <small class="text-muted">Regular Client</small>
-                                </div>
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="mb-4">"As a customer, I love how easy it is to book appointments. The real-time availability makes scheduling a breeze."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" class="client-img">
+                            <div>
+                                <h6 class="mb-0">Michael Chen</h6>
+                                <small class="text-muted">Regular Client</small>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="mb-3 text-warning">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                            </div>
-                            <p class="card-text">"The reporting features give me great insights into my business. I can track peak times and optimize my staff scheduling."</p>
-                            <div class="d-flex align-items-center mt-3">
-                                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle me-3" width="50" height="50" alt="Client">
-                                <div>
-                                    <h6 class="mb-0">Emily Rodriguez</h6>
-                                    <small class="text-muted">Salon Manager</small>
-                                </div>
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </div>
+                        <p class="mb-4">"The reporting features give me great insights into my business. I can track peak times and optimize my staff scheduling."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="client-img">
+                            <div>
+                                <h6 class="mb-0">Emily Rodriguez</h6>
+                                <small class="text-muted">Salon Manager</small>
                             </div>
                         </div>
                     </div>
@@ -386,65 +639,68 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="py-5 bg-primary text-white">
+    <!-- CTA Section -->
+    <section id="booking" class="cta-section">
         <div class="container text-center">
-            <h2 class="mb-4">Ready to Simplify Your Scheduling?</h2>
-            <p class="lead mb-4">Join thousands of businesses that trust our appointment booking system.</p>
-            <a href="#booking" class="btn btn-light btn-lg px-4 me-2">Book an Appointment</a>
-            <a href="#" class="btn btn-outline-light btn-lg px-4">Contact Us</a>
+            <h2 class="cta-title">Ready to Get Started?</h2>
+            <p class="cta-subtitle">Join thousands of businesses that trust our appointment booking system.</p>
+            <a href="{{ route('home') }}" class="btn cta-btn btn-lg">Book Appointment Now</a>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5 class="mb-3"><i class="bi bi-calendar-check"></i> {{ $setting->bname }}</h5>
+                <div class="col-lg-4 mb-4">
+                    <a href="#" class="footer-logo">{{ $setting->bname }}</a>
                     <p>Streamline your appointment scheduling process with our easy-to-use booking system.</p>
                 </div>
-                <div class="col-md-2 mb-4">
-                    <h5 class="mb-3">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#features">Features</a></li>
-                        <li class="mb-2"><a href="#how-it-works">How It Works</a></li>
-                        <li class="mb-2"><a href="#booking">Book Now</a></li>
-                        <li class="mb-2"><a href="#">Pricing</a></li>
-                    </ul>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#how-it-works">How It Works</a></li>
+                            <li><a href="#booking">Book Now</a></li>
+                            <li><a href="#">Pricing</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <h5 class="mb-3">Contact Us</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> {{ $setting->email }}</li>
-                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> {{ $setting->phone }}</li>
-                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> {{ $setting->address }}</li>
-                    </ul>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Contact Us</h5>
+                        <ul>
+                            <li><i class="bi bi-envelope me-2"></i> {{ $setting->email }}</li>
+                            <li><i class="bi bi-telephone me-2"></i> {{ $setting->phone }}</li>
+                            <li><i class="bi bi-geo-alt me-2"></i> {{ $setting->address }}</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <h5 class="mb-3">Follow Us</h5>
-                    <div class="social-links">
-                        <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="text-white me-2"><i class="bi bi-twitter"></i></a>
-                        <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="text-white me-2"><i class="bi bi-linkedin"></i></a>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Follow Us</h5>
+                        <div class="social-links mt-3">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <hr class="my-4 bg-light">
-            <div class="row text-center">
+            <div class="row text-center copyright">
                 <div class="col-md-6 text-md-start mb-3 mb-md-0">
                     <span>&copy; {{ date('Y') }} {{ $setting->bname }}. All rights reserved.</span>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <span>Designed & Developed by <a target="_blank" href="https://www.vfixtechnology.com">VFIX TECHNOLOGY</a></span>
+                    <span>Designed by <a href="https://www.vfixtechnology.com" target="_blank">VFIX TECHNOLOGY</a></span>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -456,20 +712,37 @@
                     if (target.length) {
                         event.preventDefault();
                         $('html, body').animate({
-                            scrollTop: target.offset().top - 70
-                        }, 1000, function() {
-                            var $target = $(target);
-                            $target.focus();
-                            if ($target.is(":focus")) {
-                                return false;
-                            } else {
-                                $target.attr('tabindex', '-1');
-                                $target.focus();
-                            }
-                        });
+                            scrollTop: target.offset().top - 80
+                        }, 1000);
                     }
                 }
             });
+
+            // Add animation to elements when they come into view
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.feature-card, .step-card, .testimonial-card');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+
+            // Set initial state for animated elements
+            document.querySelectorAll('.feature-card, .step-card, .testimonial-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+            });
+
+            // Run on load and scroll
+            animateOnScroll();
+            window.addEventListener('scroll', animateOnScroll);
         });
     </script>
 
